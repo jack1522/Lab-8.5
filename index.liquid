@@ -1,0 +1,16 @@
+---
+layout: layout.liquid
+title: Generate a random name
+---
+
+
+<!-- The x-data attribute value matches the name of a JavaScript function. This sets the data/state -->
+<div x-data="getRandomName">
+  
+  <!-- The x-text attribute sets the text of an HTML element to some value. That value is set it to "name" which matches the name() property in getRandomName() function. Because getRandomName is a parent div the x-text attribute of the child <h1> get's access to its properties. -->
+  <h1 x-text="name"></h1>
+  
+  <!-- @click  is calling the name() property by setting the value to itself. This "reloads" the name() function and returns a new random name. Because our <h1> has an x-text attribute set to the same propert (name) it will "react" to the change and update to the new name. -->
+  <button @click="name = name">Generate a name</button>
+  
+</div>
