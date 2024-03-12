@@ -1,16 +1,36 @@
 ---
 layout: layout.liquid
-title: Generate a random name
+title: Lab 7.5 - Kim API Fetching Cookbook
 ---
+<h1 class="font-extrabold text-3xl italic ">Welcome to Kim's Secret Recipes E-Cookbook !</h1>
+<hr >
+<!--Fetch endpoints for recipes and quotes from https://dummyjson.com/-->
+<div x-data="{pizzaImg: ('https://cdn.dummyjson.com/recipe-images/1.webp'),
+pizzaName: $fetchjson('https://dummyjson.com/recipes/1',jsonItem = 'name'),
+pizzIng: $fetchjson('https://dummyjson.com/recipes/1',jsonItem = 'ingredients'),
+vegImg: ('https://cdn.dummyjson.com/recipe-images/2.webp'),
+vegName: $fetchjson('https://dummyjson.com/recipes/2',jsonItem = 'name'),
+vegIng: $fetchjson('https://dummyjson.com/recipes/2',jsonItem = 'ingredients'),
+quoteone: $fetchjson('https://dummyjson.com/quotes/4',jsonItem = 'quote'),
+quotetwo: $fetchjson('https://dummyjson.com/quotes/19',jsonItem = 'quote'),
+quote:'',
+fetchQuote:function(){
+  this.quote= $fetchjson('https://dummyjson.com/quotes/random',jsonItem='quote');
+}
+}">
 
 
-<!-- The x-data attribute value matches the name of a JavaScript function. This sets the data/state -->
-<div x-data="getRandomName">
-  
-  <!-- The x-text attribute sets the text of an HTML element to some value. That value is set it to "name" which matches the name() property in getRandomName() function. Because getRandomName is a parent div the x-text attribute of the child <h1> get's access to its properties. -->
-  <h1 x-text="name"></h1>
-  
-  <!-- @click  is calling the name() property by setting the value to itself. This "reloads" the name() function and returns a new random name. Because our <h1> has an x-text attribute set to the same propert (name) it will "react" to the change and update to the new name. -->
-  <button @click="name = name">Generate a name</button>
-  
+<img alt="pizza" x-bind:src="pizzaImg" class=" h-auto w-3/12 mx-auto mt-4 border-4  border-solid border-pink-700">
+<h2 x-text="pizzaName" class="text-black font-bold" ></h2>
+<p x-text="pizzIng"></p>
+<p class="italic text-green-700 font-bold" >A chef's reminder: <span x-text="quoteone" class="text-pink-700"></span></p>
+<hr>
+<img alt="veg" x-bind:src="vegImg" class=" h-auto w-3/12 mx-auto mt-4 border-4  border-solid border-pink-700">
+<h2 x-text="vegName" class="text-black font-bold"></h2>
+<p x-text="vegIng"></p>
+<p class="italic text-green-700 font-bold "  >A chef's reminder: <span  x-text="quotetwo" class="text-pink-700"></span></p>
+<hr>
+<button x-on:click="fetchQuote()" class="bg-purple-800 italic mt-4 border-4 border-pink-200">CLICK ME! for more wacky quotes</button>
+<p><span x-text="quote"></span></p>
 </div>
+
