@@ -1,0 +1,27 @@
+body {
+  font-family: monospace;
+  color: #eae8ff;
+  background-color: #c21a76;
+  text-align: center;
+}
+
+#bookList {
+  text-align: center;
+  align-items: center;
+  margin: 0 auto;
+  border-collapse: collapse;
+  border: 5px solid white;
+  margin-top: 5%;
+}
+
+th,
+td {
+  border: 5px solid white;
+  padding: 10px;
+  font-size: 25px;
+}
+
+th {
+  font-style: italic;
+  font-size: 32px;
+}
